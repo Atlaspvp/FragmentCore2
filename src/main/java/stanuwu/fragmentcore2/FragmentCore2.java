@@ -3,6 +3,7 @@ package stanuwu.fragmentcore2;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import stanuwu.fragmentcore2.commands.Block36;
 import stanuwu.fragmentcore2.commands.Discord;
 import stanuwu.fragmentcore2.events.JoinEvent;
 import stanuwu.fragmentcore2.features.*;
@@ -18,12 +19,14 @@ public final class FragmentCore2 extends JavaPlugin {
         getCommand("reload").setExecutor(new Config(this));
 
         //predefined
+        Block36 block36 = new Block36();
         Fire fire = new Fire(this);
         EntityTracker entityTracker = new EntityTracker(this);
         MagicSand magicSand = new MagicSand(this);
         MultiDispenser multiDispenser = new MultiDispenser(this);
 
         //register commands
+        getCommand("block36").setExecutor(block36);
         getCommand("discord").setExecutor(new Discord());
         getCommand("ce").setExecutor(new ClearEntities());
         getCommand("fire").setExecutor(fire);
@@ -37,6 +40,7 @@ public final class FragmentCore2 extends JavaPlugin {
 
         //register events
         PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(block36, this);
         pm.registerEvents(new JoinEvent(), this);
         pm.registerEvents(new StackRemover(), this);
         pm.registerEvents(new NoTileDrops(), this);

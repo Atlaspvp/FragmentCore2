@@ -5,6 +5,10 @@ api-version: 1.17
 authors: [ jesus_is_hot ]
 description: Core Plugin for Cannoning Servers
 commands:
+  block36:
+    description: Gives block36
+    usage: </command>
+    aliases: [ b36 ]
   tntfill:
     description: Fills nearby Dispensers with TNT
     usage: </command>
